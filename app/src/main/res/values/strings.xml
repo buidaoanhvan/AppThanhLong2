@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Smart Farming</string>
+    <string name="title_activity_sign_up">Quản Lý Nông Trại</string>
+    <string name="title_quanly">Thông Số</string>
+    <string name="title_dieukien">Điều Khiển</string>
+    <string name="title_giamsat">Giám Sát</string>
+    <string name="title_thongke">Thống Kê</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="OPEN_WEATHER_MAP_API_KEY">d15eb2a76c3224a5616df3cb6470e254</string>
+
+</resources>
