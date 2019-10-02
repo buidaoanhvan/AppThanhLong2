@@ -167,7 +167,7 @@
                             app:layout_constraintTop_toTopOf="@+id/khu4" />
 
                         <ImageView
-                            android:id="@+id/imageView"
+                            android:id="@+id/hengiokhu2"
                             android:layout_width="51dp"
                             android:layout_height="30dp"
                             android:layout_marginEnd="8dp"
@@ -177,7 +177,7 @@
                             app:layout_constraintTop_toTopOf="@+id/khu2" />
 
                         <ImageView
-                            android:id="@+id/imageView5"
+                            android:id="@+id/hengiokhu3"
                             android:layout_width="51dp"
                             android:layout_height="30dp"
                             android:layout_marginEnd="8dp"
@@ -187,7 +187,7 @@
                             app:layout_constraintTop_toTopOf="@+id/khu3" />
 
                         <ImageView
-                            android:id="@+id/imageView6"
+                            android:id="@+id/hengiokhu4"
                             android:layout_width="51dp"
                             android:layout_height="30dp"
                             android:layout_marginEnd="8dp"
@@ -197,7 +197,7 @@
                             app:layout_constraintTop_toTopOf="@+id/khu4" />
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/hengiokhu1"
                             android:layout_width="51dp"
                             android:layout_height="30dp"
                             android:layout_marginEnd="8dp"
@@ -392,7 +392,7 @@
                             app:layout_constraintVertical_bias="0.0" />
 
                         <TextView
-                            android:id="@+id/textView16"
+                            android:id="@+id/tvtimekhu1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/ffffhh"

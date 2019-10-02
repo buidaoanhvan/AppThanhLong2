@@ -1,6 +1,8 @@
 package com.example.appthanhlong.fragment;
 
+import android.app.TimePickerDialog;
 import android.app.assist.AssistStructure;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.appthanhlong.R;
@@ -19,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.suke.widget.SwitchButton;
 
+import java.util.Calendar;
+
 import static android.content.ContentValues.TAG;
 
 public class DieuKhienFragment extends Fragment {
@@ -27,6 +34,9 @@ public class DieuKhienFragment extends Fragment {
     DatabaseReference khu2 = database.getReference("DieuKien/Khu2");
     DatabaseReference khu3 = database.getReference("DieuKien/Khu3");
     DatabaseReference khu4 = database.getReference("DieuKien/Khu4");
+    Calendar calendar = Calendar.getInstance();
+    int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+    int currentMinute = calendar.get(Calendar.MINUTE);
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,6 +47,49 @@ public class DieuKhienFragment extends Fragment {
         final com.suke.widget.SwitchButton switch3 = (com.suke.widget.SwitchButton) view.findViewById(R.id.khu3);
         final com.suke.widget.SwitchButton switch4 = (com.suke.widget.SwitchButton) view.findViewById(R.id.khu4);
         com.suke.widget.SwitchButton switch5 = (com.suke.widget.SwitchButton) view.findViewById(R.id.tatca);
+        ImageView hengiokhu1 = (ImageView) view.findViewById(R.id.hengiokhu1);
+        ImageView hengiokhu2 = (ImageView) view.findViewById(R.id.hengiokhu2);
+        ImageView hengiokhu3 = (ImageView) view.findViewById(R.id.hengiokhu3);
+        ImageView hengiokhu4 = (ImageView) view.findViewById(R.id.hengiokhu4);
+        final TextView tvtimekhu1 = (TextView) view.findViewById(R.id.tvtimekhu1);
+
+
+        hengiokhu1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDaykhu1, int minuteskhu1) {
+                        tvtimekhu1.setText(hourOfDaykhu1+":"+minuteskhu1);
+                    }
+                }, currentHour, currentMinute, true);
+                timePickerDialog.show();
+
+            }
+        });
+
+
+
+        hengiokhu2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "khu2", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        hengiokhu3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "khu3", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        hengiokhu4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "khu4", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // tai du lieu khu tuoi
         khu1.addValueEventListener(new ValueEventListener() {
