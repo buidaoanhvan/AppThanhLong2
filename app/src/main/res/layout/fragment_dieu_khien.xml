@@ -402,7 +402,7 @@
                             app:layout_constraintTop_toTopOf="@+id/imageView10" />
 
                         <TextView
-                            android:id="@+id/textView17"
+                            android:id="@+id/tvtimekhu3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/ffffhh"
@@ -423,7 +423,7 @@
                             app:layout_constraintVertical_bias="0.181" />
 
                         <TextView
-                            android:id="@+id/textView19"
+                            android:id="@+id/tvtimekhu4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/ffffhh"

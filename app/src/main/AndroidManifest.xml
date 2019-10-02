@@ -19,12 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <receiver android:name=".receiver.KhuMotReceiver"/>
         <receiver android:name=".receiver.KhuHaiReceiver"/>
-        <service android:name=".service.KhuMotService"
-            android:enabled="true"/>
-        <service android:name=".service.KhuHaiService"
-            android:enabled="true"/>
+        <receiver android:name=".receiver.KhuBaReceiver"/>
+        <receiver android:name=".receiver.KhuBonReceiver"/>
+
         <activity android:name=".MainActivity">
         </activity>
     </application>

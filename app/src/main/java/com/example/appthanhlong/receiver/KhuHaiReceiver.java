@@ -1,22 +1,18 @@
 package com.example.appthanhlong.receiver;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
-import android.util.Log;
-
-import com.example.appthanhlong.service.KhuHaiService;
+        import android.content.BroadcastReceiver;
+        import android.content.Context;
+        import android.content.Intent;
+        import android.util.Log;
+        import com.google.firebase.database.DatabaseReference;
+        import com.google.firebase.database.FirebaseDatabase;
 
 public class KhuHaiReceiver extends BroadcastReceiver {
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference khu2 = database.getReference("DieuKien/Khu2");
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.e("anhvan","Khu2");
-        Intent myIntent = new Intent(context, KhuHaiService.class);
-        if (Build.VERSION.SDK_INT >= 26)
-            context.startForegroundService(myIntent);
-        else{
-            context.startService(myIntent);
-        }
+        khu2.setValue(1);
     }
 }

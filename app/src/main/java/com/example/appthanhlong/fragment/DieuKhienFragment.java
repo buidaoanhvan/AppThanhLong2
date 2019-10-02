@@ -17,6 +17,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.appthanhlong.receiver.KhuBaReceiver;
+import com.example.appthanhlong.receiver.KhuBonReceiver;
 import com.example.appthanhlong.receiver.KhuHaiReceiver;
 import com.example.appthanhlong.receiver.KhuMotReceiver;
 import com.example.appthanhlong.R;
@@ -61,12 +63,14 @@ public class DieuKhienFragment extends Fragment {
         ImageView hengiokhu4 = (ImageView) view.findViewById(R.id.hengiokhu4);
         final Intent intent1 = new Intent(getActivity(), KhuMotReceiver.class);
         final Intent intent2 = new Intent(getActivity(), KhuHaiReceiver.class);
-        final Intent intent3 = new Intent(getActivity(), KhuMotReceiver.class);
-        final Intent intent4 = new Intent(getActivity(), KhuMotReceiver.class);
+        final Intent intent3 = new Intent(getActivity(), KhuBaReceiver.class);
+        final Intent intent4 = new Intent(getActivity(), KhuBonReceiver.class);
         final TextView tvtimekhu1 = (TextView) view.findViewById(R.id.tvtimekhu1);
         final TextView tvtimekhu2 = (TextView) view.findViewById(R.id.tvtimekhu2);
+        final TextView tvtimekhu3 = (TextView) view.findViewById(R.id.tvtimekhu3);
+        final TextView tvtimekhu4 = (TextView) view.findViewById(R.id.tvtimekhu4);
         calendar= Calendar.getInstance();
-
+//==================================1==================================================
         hengiokhu1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,9 +90,7 @@ public class DieuKhienFragment extends Fragment {
                 timePickerDialog.show();
             }
         });
-
-
-
+//===================================2=================================================
         hengiokhu2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,21 +110,47 @@ public class DieuKhienFragment extends Fragment {
                 timePickerDialog.show();
             }
         });
-
+//=================================3===================================================
         hengiokhu3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "khu3", Toast.LENGTH_SHORT).show();
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDaykhu3, int minuteskhu3) {
+                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDaykhu3);
+                        calendar.set(Calendar.MINUTE, minuteskhu3);
+                        tvtimekhu3.setText(hourOfDaykhu3+":"+minuteskhu3);
+                        pendingIntent = PendingIntent.getBroadcast(
+                                getActivity(),0,intent3,PendingIntent.FLAG_CANCEL_CURRENT
+                        );
+                        alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
+
+                    }
+                }, currentHour, currentMinute, true);
+                timePickerDialog.show();
             }
         });
-
+//==================================4==================================================
         hengiokhu4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "khu4", Toast.LENGTH_SHORT).show();
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDaykhu4, int minuteskhu4) {
+                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDaykhu4);
+                        calendar.set(Calendar.MINUTE, minuteskhu4);
+                        tvtimekhu4.setText(hourOfDaykhu4+":"+minuteskhu4);
+                        pendingIntent = PendingIntent.getBroadcast(
+                                getActivity(),0,intent4,PendingIntent.FLAG_CANCEL_CURRENT
+                        );
+                        alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
+
+                    }
+                }, currentHour, currentMinute, true);
+                timePickerDialog.show();
             }
         });
-
+//====================================================================================
         // tai du lieu khu tuoi
         khu1.addValueEventListener(new ValueEventListener() {
             @Override
