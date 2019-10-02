@@ -1,8 +1,9 @@
 package com.example.appthanhlong.fragment;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-import android.app.assist.AssistStructure;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.appthanhlong.receiver.KhuHaiReceiver;
+import com.example.appthanhlong.receiver.KhuMotReceiver;
 import com.example.appthanhlong.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,6 +30,7 @@ import com.suke.widget.SwitchButton;
 import java.util.Calendar;
 
 import static android.content.ContentValues.TAG;
+import static android.content.Context.ALARM_SERVICE;
 
 public class DieuKhienFragment extends Fragment {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -37,6 +41,9 @@ public class DieuKhienFragment extends Fragment {
     Calendar calendar = Calendar.getInstance();
     int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
     int currentMinute = calendar.get(Calendar.MINUTE);
+    PendingIntent pendingIntent;
+    AlarmManager alarmManager;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,12 +54,18 @@ public class DieuKhienFragment extends Fragment {
         final com.suke.widget.SwitchButton switch3 = (com.suke.widget.SwitchButton) view.findViewById(R.id.khu3);
         final com.suke.widget.SwitchButton switch4 = (com.suke.widget.SwitchButton) view.findViewById(R.id.khu4);
         com.suke.widget.SwitchButton switch5 = (com.suke.widget.SwitchButton) view.findViewById(R.id.tatca);
+        alarmManager = (AlarmManager)getActivity().getSystemService(ALARM_SERVICE);
         ImageView hengiokhu1 = (ImageView) view.findViewById(R.id.hengiokhu1);
         ImageView hengiokhu2 = (ImageView) view.findViewById(R.id.hengiokhu2);
         ImageView hengiokhu3 = (ImageView) view.findViewById(R.id.hengiokhu3);
         ImageView hengiokhu4 = (ImageView) view.findViewById(R.id.hengiokhu4);
+        final Intent intent1 = new Intent(getActivity(), KhuMotReceiver.class);
+        final Intent intent2 = new Intent(getActivity(), KhuHaiReceiver.class);
+        final Intent intent3 = new Intent(getActivity(), KhuMotReceiver.class);
+        final Intent intent4 = new Intent(getActivity(), KhuMotReceiver.class);
         final TextView tvtimekhu1 = (TextView) view.findViewById(R.id.tvtimekhu1);
-
+        final TextView tvtimekhu2 = (TextView) view.findViewById(R.id.tvtimekhu2);
+        calendar= Calendar.getInstance();
 
         hengiokhu1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,11 +73,17 @@ public class DieuKhienFragment extends Fragment {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDaykhu1, int minuteskhu1) {
+                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDaykhu1);
+                        calendar.set(Calendar.MINUTE, minuteskhu1);
                         tvtimekhu1.setText(hourOfDaykhu1+":"+minuteskhu1);
+                        pendingIntent = PendingIntent.getBroadcast(
+                                getActivity(),0,intent1,PendingIntent.FLAG_CANCEL_CURRENT
+                        );
+                        alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
+
                     }
                 }, currentHour, currentMinute, true);
                 timePickerDialog.show();
-
             }
         });
 
@@ -73,7 +92,20 @@ public class DieuKhienFragment extends Fragment {
         hengiokhu2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "khu2", Toast.LENGTH_SHORT).show();
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDaykhu2, int minuteskhu2) {
+                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDaykhu2);
+                        calendar.set(Calendar.MINUTE, minuteskhu2);
+                        tvtimekhu2.setText(hourOfDaykhu2+":"+minuteskhu2);
+                        pendingIntent = PendingIntent.getBroadcast(
+                                getActivity(),0,intent2,PendingIntent.FLAG_CANCEL_CURRENT
+                        );
+                        alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
+
+                    }
+                }, currentHour, currentMinute, true);
+                timePickerDialog.show();
             }
         });
 
