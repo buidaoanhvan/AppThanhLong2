@@ -4,10 +4,11 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import com.example.appthanhlong.receiver.KhuBaReceiver;
 import com.example.appthanhlong.receiver.KhuBonReceiver;
 import com.example.appthanhlong.receiver.KhuHaiReceiver;
@@ -40,11 +40,18 @@ public class DieuKhienFragment extends Fragment {
     DatabaseReference khu2 = database.getReference("DieuKien/Khu2");
     DatabaseReference khu3 = database.getReference("DieuKien/Khu3");
     DatabaseReference khu4 = database.getReference("DieuKien/Khu4");
+
+    DatabaseReference TGkhu1 = database.getReference("ThoiGian/MoKhu1");
+    DatabaseReference TGkhu2 = database.getReference("ThoiGian/MoKhu2");
+    DatabaseReference TGkhu3 = database.getReference("ThoiGian/MoKhu3");
+    DatabaseReference TGkhu4 = database.getReference("ThoiGian/MoKhu4");
     Calendar calendar = Calendar.getInstance();
     int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
     int currentMinute = calendar.get(Calendar.MINUTE);
     PendingIntent pendingIntent;
     AlarmManager alarmManager;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,7 +63,7 @@ public class DieuKhienFragment extends Fragment {
         final com.suke.widget.SwitchButton switch3 = (com.suke.widget.SwitchButton) view.findViewById(R.id.khu3);
         final com.suke.widget.SwitchButton switch4 = (com.suke.widget.SwitchButton) view.findViewById(R.id.khu4);
         com.suke.widget.SwitchButton switch5 = (com.suke.widget.SwitchButton) view.findViewById(R.id.tatca);
-        alarmManager = (AlarmManager)getActivity().getSystemService(ALARM_SERVICE);
+
         ImageView hengiokhu1 = (ImageView) view.findViewById(R.id.hengiokhu1);
         ImageView hengiokhu2 = (ImageView) view.findViewById(R.id.hengiokhu2);
         ImageView hengiokhu3 = (ImageView) view.findViewById(R.id.hengiokhu3);
@@ -69,6 +76,8 @@ public class DieuKhienFragment extends Fragment {
         final TextView tvtimekhu2 = (TextView) view.findViewById(R.id.tvtimekhu2);
         final TextView tvtimekhu3 = (TextView) view.findViewById(R.id.tvtimekhu3);
         final TextView tvtimekhu4 = (TextView) view.findViewById(R.id.tvtimekhu4);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        editor = sharedPreferences.edit();
         calendar= Calendar.getInstance();
 //==================================1==================================================
         hengiokhu1.setOnClickListener(new View.OnClickListener() {
@@ -79,12 +88,13 @@ public class DieuKhienFragment extends Fragment {
                     public void onTimeSet(TimePicker timePicker, int hourOfDaykhu1, int minuteskhu1) {
                         calendar.set(Calendar.HOUR_OF_DAY, hourOfDaykhu1);
                         calendar.set(Calendar.MINUTE, minuteskhu1);
-                        tvtimekhu1.setText(hourOfDaykhu1+":"+minuteskhu1);
+                        String thoigian1 = (hourOfDaykhu1+":"+minuteskhu1);
+                        TGkhu1.setValue(thoigian1);
                         pendingIntent = PendingIntent.getBroadcast(
                                 getActivity(),0,intent1,PendingIntent.FLAG_CANCEL_CURRENT
                         );
-                        alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
-
+                        AlarmManager alarmManager = (AlarmManager)getActivity().getSystemService(ALARM_SERVICE);
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + (5 * 1000), pendingIntent);
                     }
                 }, currentHour, currentMinute, true);
                 timePickerDialog.show();
@@ -99,11 +109,13 @@ public class DieuKhienFragment extends Fragment {
                     public void onTimeSet(TimePicker timePicker, int hourOfDaykhu2, int minuteskhu2) {
                         calendar.set(Calendar.HOUR_OF_DAY, hourOfDaykhu2);
                         calendar.set(Calendar.MINUTE, minuteskhu2);
-                        tvtimekhu2.setText(hourOfDaykhu2+":"+minuteskhu2);
+                        String thoigian2 = (hourOfDaykhu2+":"+minuteskhu2);
+                        TGkhu2.setValue(thoigian2);
                         pendingIntent = PendingIntent.getBroadcast(
                                 getActivity(),0,intent2,PendingIntent.FLAG_CANCEL_CURRENT
                         );
-                        alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
+                        AlarmManager alarmManager = (AlarmManager)getActivity().getSystemService(ALARM_SERVICE);
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + (5 * 1000), pendingIntent);
 
                     }
                 }, currentHour, currentMinute, true);
@@ -119,11 +131,13 @@ public class DieuKhienFragment extends Fragment {
                     public void onTimeSet(TimePicker timePicker, int hourOfDaykhu3, int minuteskhu3) {
                         calendar.set(Calendar.HOUR_OF_DAY, hourOfDaykhu3);
                         calendar.set(Calendar.MINUTE, minuteskhu3);
-                        tvtimekhu3.setText(hourOfDaykhu3+":"+minuteskhu3);
+                        String thoigian3 = (hourOfDaykhu3+":"+minuteskhu3);
+                        TGkhu3.setValue(thoigian3);
                         pendingIntent = PendingIntent.getBroadcast(
                                 getActivity(),0,intent3,PendingIntent.FLAG_CANCEL_CURRENT
                         );
-                        alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
+                        AlarmManager alarmManager = (AlarmManager)getActivity().getSystemService(ALARM_SERVICE);
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + (5 * 1000), pendingIntent);
 
                     }
                 }, currentHour, currentMinute, true);
@@ -139,11 +153,13 @@ public class DieuKhienFragment extends Fragment {
                     public void onTimeSet(TimePicker timePicker, int hourOfDaykhu4, int minuteskhu4) {
                         calendar.set(Calendar.HOUR_OF_DAY, hourOfDaykhu4);
                         calendar.set(Calendar.MINUTE, minuteskhu4);
-                        tvtimekhu4.setText(hourOfDaykhu4+":"+minuteskhu4);
+                        String thoigian4 = (hourOfDaykhu4+":"+minuteskhu4);
+                        TGkhu4.setValue(thoigian4);
                         pendingIntent = PendingIntent.getBroadcast(
                                 getActivity(),0,intent4,PendingIntent.FLAG_CANCEL_CURRENT
                         );
-                        alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
+                        AlarmManager alarmManager = (AlarmManager)getActivity().getSystemService(ALARM_SERVICE);
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + (5 * 1000), pendingIntent);
 
                     }
                 }, currentHour, currentMinute, true);
@@ -151,6 +167,56 @@ public class DieuKhienFragment extends Fragment {
             }
         });
 //====================================================================================
+
+        // Read time1
+        TGkhu1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String timekhu1 = dataSnapshot.getValue(String.class);
+               tvtimekhu1.setText(timekhu1);
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+        // Read time2
+        TGkhu2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String timekhu2 = dataSnapshot.getValue(String.class);
+                tvtimekhu2.setText(timekhu2);
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+        // Read time3
+        TGkhu3.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String timekhu3 = dataSnapshot.getValue(String.class);
+                tvtimekhu3.setText(timekhu3);
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+        // Read time4
+        TGkhu4.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String timekhu4 = dataSnapshot.getValue(String.class);
+                tvtimekhu4.setText(timekhu4);
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
         // tai du lieu khu tuoi
         khu1.addValueEventListener(new ValueEventListener() {
             @Override

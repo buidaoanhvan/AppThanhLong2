@@ -27,7 +27,12 @@ public class GiamSatFragment extends Fragment {
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
         CookieManager.getInstance().setAcceptCookie(true);
-        webv.getSettings().setJavaScriptEnabled(true);
+        webv.getSettings().setBuiltInZoomControls(true);
+        webv.getSettings().setDisplayZoomControls(false);
+        webv.getSettings().setUseWideViewPort(true);
+        webv.getSettings().setLoadWithOverviewMode(true);
+        webv.getSettings().setDomStorageEnabled(true);
+        webv.setInitialScale(1);
         webv.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -35,7 +40,7 @@ public class GiamSatFragment extends Fragment {
                 return false;
             }
         });
-        webv.loadUrl("https://ustream.tv/channel/9408562");
+        webv.loadUrl("http://14.161.8.73:83/GetData.cgi?CH=1#.XZsBhQDb5Ek.link");
         return view;
     }
 

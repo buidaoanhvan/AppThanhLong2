@@ -3,6 +3,7 @@
     package="com.example.appthanhlong">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,9 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ManHinhChaoActivity">
+        <activity android:name=".ManHinhChaoActivity"
+            android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +28,8 @@
         <receiver android:name=".receiver.KhuBaReceiver"/>
         <receiver android:name=".receiver.KhuBonReceiver"/>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
