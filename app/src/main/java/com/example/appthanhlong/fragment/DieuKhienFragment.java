@@ -17,7 +17,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -60,10 +59,10 @@ public class DieuKhienFragment extends Fragment {
     DatabaseReference doamdatdb = database.getReference("ThongSo/DoAmDat");
     DatabaseReference mucnuocdb = database.getReference("ThongSo/MucNuoc");
 
-    int nhietdo ;
-    int doamkh ;
-    int doamdat ;
-    int mucnuoc ;
+    int nhietdo;
+    int doamkh;
+    int doamdat;
+    int mucnuoc;
 
     Calendar calendar = Calendar.getInstance();
     int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -512,7 +511,7 @@ public class DieuKhienFragment extends Fragment {
                     txtSpeechInput.setText(voice);
 
                     switch (voice) {
-                        case "mở khu 1":
+                        case "mở khu số 1":
                             khu1.setValue(1);
                             toSpeech = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
                                 @Override
@@ -524,7 +523,7 @@ public class DieuKhienFragment extends Fragment {
                                 }
                             });
                             break;
-                        case "mở khu 2":
+                        case "mở khu số 2":
                             khu2.setValue(1);
                             toSpeech = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
                                 @Override
@@ -536,7 +535,7 @@ public class DieuKhienFragment extends Fragment {
                                 }
                             });
                             break;
-                        case "mở khu 3":
+                        case "mở khu số 3":
                             khu3.setValue(1);
                             toSpeech = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
                                 @Override
@@ -548,7 +547,7 @@ public class DieuKhienFragment extends Fragment {
                                 }
                             });
                             break;
-                        case "mở khu 4":
+                        case "mở khu số 4":
                             khu4.setValue(1);
                             toSpeech = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
                                 @Override
@@ -560,7 +559,7 @@ public class DieuKhienFragment extends Fragment {
                                 }
                             });
                             break;
-                        case "tắt khu 1":
+                        case "tắt khu số 1":
                             khu1.setValue(0);
                             toSpeech = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
                                 @Override
@@ -572,7 +571,7 @@ public class DieuKhienFragment extends Fragment {
                                 }
                             });
                             break;
-                        case "tắt khu 2":
+                        case "tắt khu số 2":
                             khu2.setValue(0);
                             toSpeech = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
                                 @Override
@@ -584,7 +583,7 @@ public class DieuKhienFragment extends Fragment {
                                 }
                             });
                             break;
-                        case "tắt khu 3":
+                        case "tắt khu số 3":
                             khu3.setValue(0);
                             toSpeech = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
                                 @Override
@@ -596,7 +595,7 @@ public class DieuKhienFragment extends Fragment {
                                 }
                             });
                             break;
-                        case "tắt khu 4":
+                        case "tắt khu số 4":
                             khu4.setValue(0);
                             toSpeech = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
                                 @Override
@@ -615,7 +614,7 @@ public class DieuKhienFragment extends Fragment {
                                     if (status != TextToSpeech.ERROR) {
                                         toSpeech.setLanguage(Locale.getDefault());
 
-                                        toSpeech.speak("Nhiệt độ hiện tại là" + nhietdo +"độ sê," + ", độ ẩm không khí là " + doamkh +"phần trăm,"+"độ ẩm đất là" + doamdat +"phần trăm,"+"mực nước có trong bể là" + mucnuoc+"phần trăm", TextToSpeech.QUEUE_FLUSH, null, null);
+                                        toSpeech.speak("Nhiệt độ hiện tại là" + nhietdo + "độ sê," + ", độ ẩm không khí là " + doamkh + "phần trăm," + "độ ẩm đất là" + doamdat + "phần trăm," + "mực nước có trong bể là" + mucnuoc + "phần trăm", TextToSpeech.QUEUE_FLUSH, null, null);
                                     }
                                 }
                             });
