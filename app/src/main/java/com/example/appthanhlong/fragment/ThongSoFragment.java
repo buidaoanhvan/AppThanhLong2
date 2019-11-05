@@ -2,6 +2,7 @@ package com.example.appthanhlong.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -37,26 +38,101 @@ public class ThongSoFragment extends Fragment {
 
     ArcProgress nhietdo, doam, doamdat;
     CircleProgress mucnuoc;
-    TextView tvnhietdo, tvgio, tvvitri;
+    TextView tvnhietdo, tvgio, tvvitri,tvtrangthaivuon,tvttkhu1,tvttkhu2,tvttkhu3,tvttkhu4;
     ImageView imgthoitiet;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference nhietdodb = database.getReference("ThongSo/NhietDo");
     DatabaseReference doamdb = database.getReference("ThongSo/DoAm");
     DatabaseReference doamdatdb = database.getReference("ThongSo/DoAmDat");
     DatabaseReference mucnuocdb = database.getReference("ThongSo/MucNuoc");
+    DatabaseReference khu1 = database.getReference("DieuKien/Khu1");
+    DatabaseReference khu2 = database.getReference("DieuKien/Khu2");
+    DatabaseReference khu3 = database.getReference("DieuKien/Khu3");
+    DatabaseReference khu4 = database.getReference("DieuKien/Khu4");
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_thong_so, container, false);
+        tvttkhu1 = (TextView) view.findViewById(R.id.tvttkhu1);
+        tvttkhu2 = (TextView) view.findViewById(R.id.tvttkhu2);
+        tvttkhu3 = (TextView) view.findViewById(R.id.tvttkhu3);
+        tvttkhu4 = (TextView) view.findViewById(R.id.tvttkhu4);
         nhietdo = (ArcProgress) view.findViewById(R.id.nhietdo_progress);
         doam = (ArcProgress) view.findViewById(R.id.doam_progress);
         doamdat = (ArcProgress) view.findViewById(R.id.doamdat_progress);
         mucnuoc = (CircleProgress) view.findViewById(R.id.mucnuoc_progress);
         tvnhietdo = (TextView) view.findViewById(R.id.tvnhietdo);
         tvgio = (TextView) view.findViewById(R.id.tvgio);
+        tvtrangthaivuon = (TextView) view.findViewById(R.id.tvtrangthaivuon);
         tvvitri = (TextView) view.findViewById(R.id.tvvitri);
         imgthoitiet =(ImageView) view.findViewById(R.id.imgthoitiet);
+        //khu1
+        khu1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int khu1 = dataSnapshot.getValue(Integer.class);
+                if(khu1==1){
+                    tvttkhu1.setText("Đang Tưới");
+                }else {
+                    tvttkhu1.setText("Không");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+        //khu4
+        khu4.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int khu4 = dataSnapshot.getValue(Integer.class);
+                if(khu4==1){
+                    tvttkhu4.setText("Đang Tưới");
+                }else {
+                    tvttkhu4.setText("Không");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
+        //khu2
+        khu2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int khu2 = dataSnapshot.getValue(Integer.class);
+                if(khu2==1){
+                    tvttkhu2.setText("Đang Tưới");
+                }else {
+                    tvttkhu2.setText("Không");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
+        //khu3
+        khu3.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int khu3 = dataSnapshot.getValue(Integer.class);
+                if(khu3==1){
+                    tvttkhu3.setText("Đang Tưới");
+                }else {
+                    tvttkhu3.setText("Không");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
 
         // Read Nhiet Do
         nhietdodb.addValueEventListener(new ValueEventListener() {
@@ -64,6 +140,11 @@ public class ThongSoFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int tsnhiet = dataSnapshot.getValue(Integer.class);
                 nhietdo.setProgress(tsnhiet);
+                if(tsnhiet > 35){
+                    tvtrangthaivuon.setText("Nhiệt Độ Cao");
+                }else {
+                    tvtrangthaivuon.setText("Ổn Định");
+                }
             }
             @Override
             public void onCancelled(DatabaseError error) {
@@ -90,6 +171,11 @@ public class ThongSoFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int tsdoamdat = dataSnapshot.getValue(Integer.class);
                 doamdat.setProgress(tsdoamdat);
+                if(tsdoamdat < 80){
+                    tvtrangthaivuon.setText("Độ Ẩm Đất Thấp");
+                }else {
+                    tvtrangthaivuon.setText("Ổn Định");
+                }
             }
             @Override
             public void onCancelled(DatabaseError error) {
@@ -103,6 +189,12 @@ public class ThongSoFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int tsmucnuoc = dataSnapshot.getValue(Integer.class);
                 mucnuoc.setProgress(tsmucnuoc);
+                if(tsmucnuoc < 20){
+                    tvtrangthaivuon.setText("Mực Nước Dưới 20%");
+                }else {
+                    tvtrangthaivuon.setText("Ổn Định");
+                }
+
             }
             @Override
             public void onCancelled(DatabaseError error) {
