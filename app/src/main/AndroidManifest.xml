@@ -28,6 +28,11 @@
         <receiver android:name=".receiver.KhuBaReceiver"/>
         <receiver android:name=".receiver.KhuBonReceiver"/>
 
+        <receiver android:name=".receiver.KhuMotTatReceiver"/>
+        <receiver android:name=".receiver.KhuHaiTatReceiver"/>
+        <receiver android:name=".receiver.KhuBaTatReceiver"/>
+        <receiver android:name=".receiver.KhuBonTatReceiver"/>
+
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait">
         </activity>

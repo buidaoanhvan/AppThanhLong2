@@ -170,41 +170,120 @@
                             android:id="@+id/hengiokhu2"
                             android:layout_width="51dp"
                             android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
                             android:src="@drawable/hengio"
                             app:layout_constraintBottom_toBottomOf="@+id/khu2"
                             app:layout_constraintEnd_toStartOf="@+id/khu2"
+                            app:layout_constraintStart_toEndOf="@+id/textView"
                             app:layout_constraintTop_toTopOf="@+id/khu2" />
 
                         <ImageView
                             android:id="@+id/hengiokhu3"
                             android:layout_width="51dp"
                             android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
                             android:src="@drawable/hengio"
                             app:layout_constraintBottom_toBottomOf="@+id/khu3"
                             app:layout_constraintEnd_toStartOf="@+id/khu3"
+                            app:layout_constraintStart_toEndOf="@+id/textView3"
                             app:layout_constraintTop_toTopOf="@+id/khu3" />
 
                         <ImageView
                             android:id="@+id/hengiokhu4"
                             android:layout_width="51dp"
                             android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
                             android:src="@drawable/hengio"
                             app:layout_constraintBottom_toBottomOf="@+id/khu4"
                             app:layout_constraintEnd_toStartOf="@+id/khu4"
+                            app:layout_constraintStart_toEndOf="@+id/textView6"
                             app:layout_constraintTop_toTopOf="@+id/khu4" />
 
                         <ImageView
                             android:id="@+id/hengiokhu1"
                             android:layout_width="51dp"
                             android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
                             android:src="@drawable/hengio"
                             app:layout_constraintBottom_toBottomOf="@+id/khu1"
                             app:layout_constraintEnd_toStartOf="@+id/khu1"
-                            app:layout_constraintTop_toTopOf="@+id/khu1" />
+                            app:layout_constraintStart_toEndOf="@+id/textView4"
+                            app:layout_constraintTop_toTopOf="@+id/khu1"
+                            app:layout_constraintVertical_bias="1.0" />
+
+                        <ImageView
+                            android:id="@+id/hengiotat1"
+                            android:layout_width="51dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:src="@drawable/hengio"
+                            app:layout_constraintBottom_toBottomOf="@+id/hengiokhu1"
+                            app:layout_constraintEnd_toStartOf="@+id/khu1"
+                            app:layout_constraintStart_toEndOf="@+id/hengiokhu1"
+                            app:layout_constraintTop_toTopOf="@+id/hengiokhu1" />
+
+                        <ImageView
+                            android:id="@+id/hengiotat2"
+                            android:layout_width="51dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:src="@drawable/hengio"
+                            app:layout_constraintBottom_toBottomOf="@+id/hengiokhu2"
+                            app:layout_constraintEnd_toStartOf="@+id/khu2"
+                            app:layout_constraintStart_toEndOf="@+id/hengiokhu2"
+                            app:layout_constraintTop_toTopOf="@+id/hengiokhu2" />
+
+                        <ImageView
+                            android:id="@+id/hengiotat3"
+                            android:layout_width="51dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:src="@drawable/hengio"
+                            app:layout_constraintBottom_toBottomOf="@+id/hengiokhu3"
+                            app:layout_constraintEnd_toStartOf="@+id/khu3"
+                            app:layout_constraintStart_toEndOf="@+id/hengiokhu3"
+                            app:layout_constraintTop_toTopOf="@+id/hengiokhu3" />
+
+                        <ImageView
+                            android:id="@+id/hengiotat4"
+                            android:layout_width="51dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:src="@drawable/hengio"
+                            app:layout_constraintBottom_toBottomOf="@+id/hengiokhu4"
+                            app:layout_constraintEnd_toStartOf="@+id/khu4"
+                            app:layout_constraintStart_toEndOf="@+id/hengiokhu4"
+                            app:layout_constraintTop_toTopOf="@+id/hengiokhu4" />
+
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Mở"
+                            android:textSize="10sp"
+                            app:layout_constraintEnd_toEndOf="@+id/hengiokhu1"
+                            app:layout_constraintStart_toStartOf="@+id/hengiokhu1"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Tắt"
+                            android:textSize="10sp"
+                            app:layout_constraintEnd_toEndOf="@+id/hengiotat1"
+                            app:layout_constraintStart_toStartOf="@+id/hengiotat1"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
@@ -396,7 +475,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/ffffhh"
-                            android:text="TextView"
+                            android:text="-- : --"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView10"
                             app:layout_constraintStart_toEndOf="@+id/imageView10"
                             app:layout_constraintTop_toTopOf="@+id/imageView10" />
@@ -406,7 +485,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/ffffhh"
-                            android:text="TextView"
+                            android:text="-- : --"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView8"
                             app:layout_constraintStart_toEndOf="@+id/imageView8"
                             app:layout_constraintTop_toTopOf="@+id/imageView8" />
@@ -416,7 +495,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/ffffhh"
-                            android:text="TextView"
+                            android:text="-- : --"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView7"
                             app:layout_constraintStart_toEndOf="@+id/imageView7"
                             app:layout_constraintTop_toTopOf="@+id/imageView7"
@@ -427,7 +506,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/ffffhh"
-                            android:text="TextView"
+                            android:text="-- : --"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView9"
                             app:layout_constraintStart_toEndOf="@+id/imageView9"
                             app:layout_constraintTop_toTopOf="@+id/imageView9" />
@@ -483,37 +562,41 @@
                             app:layout_constraintVertical_bias="0.071" />
 
                         <TextView
-                            android:id="@+id/textView20"
+                            android:id="@+id/tvtimekhu1t"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView"
+                            android:fontFamily="@font/ffffhh"
+                            android:text="-- : --"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView12"
                             app:layout_constraintStart_toEndOf="@+id/imageView12"
                             app:layout_constraintTop_toTopOf="@+id/imageView12" />
 
                         <TextView
-                            android:id="@+id/textView21"
+                            android:id="@+id/tvtimekhu3t"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView"
+                            android:fontFamily="@font/ffffhh"
+                            android:text="-- : --"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView14"
                             app:layout_constraintStart_toEndOf="@+id/imageView14"
                             app:layout_constraintTop_toTopOf="@+id/imageView14" />
 
                         <TextView
-                            android:id="@+id/textView22"
+                            android:id="@+id/tvtimekhu4t"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView"
+                            android:fontFamily="@font/ffffhh"
+                            android:text="-- : --"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView13"
                             app:layout_constraintStart_toEndOf="@+id/imageView13"
                             app:layout_constraintTop_toTopOf="@+id/imageView13" />
 
                         <TextView
-                            android:id="@+id/textView23"
+                            android:id="@+id/tvtimekhu2t"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView"
+                            android:fontFamily="@font/ffffhh"
+                            android:text="-- : --"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView11"
                             app:layout_constraintStart_toEndOf="@+id/imageView11"
                             app:layout_constraintTop_toTopOf="@+id/imageView11" />

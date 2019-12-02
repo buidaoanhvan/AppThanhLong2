@@ -23,10 +23,14 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.appthanhlong.receiver.KhuBaReceiver;
+import com.example.appthanhlong.receiver.KhuBaTatReceiver;
 import com.example.appthanhlong.receiver.KhuBonReceiver;
+import com.example.appthanhlong.receiver.KhuBonTatReceiver;
 import com.example.appthanhlong.receiver.KhuHaiReceiver;
+import com.example.appthanhlong.receiver.KhuHaiTatReceiver;
 import com.example.appthanhlong.receiver.KhuMotReceiver;
 import com.example.appthanhlong.R;
+import com.example.appthanhlong.receiver.KhuMotTatReceiver;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,6 +57,11 @@ public class DieuKhienFragment extends Fragment {
     DatabaseReference TGkhu2 = database.getReference("ThoiGian/MoKhu2");
     DatabaseReference TGkhu3 = database.getReference("ThoiGian/MoKhu3");
     DatabaseReference TGkhu4 = database.getReference("ThoiGian/MoKhu4");
+
+    DatabaseReference TGTkhu1 = database.getReference("ThoiGian/TatKhu1");
+    DatabaseReference TGTkhu2 = database.getReference("ThoiGian/TatKhu2");
+    DatabaseReference TGTkhu3 = database.getReference("ThoiGian/TatKhu3");
+    DatabaseReference TGTkhu4 = database.getReference("ThoiGian/TatKhu4");
 
     DatabaseReference nhietdodb = database.getReference("ThongSo/NhietDo");
     DatabaseReference doamdb = database.getReference("ThongSo/DoAm");
@@ -169,14 +178,32 @@ public class DieuKhienFragment extends Fragment {
         ImageView hengiokhu2 = (ImageView) view.findViewById(R.id.hengiokhu2);
         ImageView hengiokhu3 = (ImageView) view.findViewById(R.id.hengiokhu3);
         ImageView hengiokhu4 = (ImageView) view.findViewById(R.id.hengiokhu4);
+
+        ImageView hengiotat1 = (ImageView) view.findViewById(R.id.hengiotat1);
+        ImageView hengiotat2 = (ImageView) view.findViewById(R.id.hengiotat2);
+        ImageView hengiotat3 = (ImageView) view.findViewById(R.id.hengiotat3);
+        ImageView hengiotat4 = (ImageView) view.findViewById(R.id.hengiotat4);
+
         final Intent intent1 = new Intent(getActivity(), KhuMotReceiver.class);
         final Intent intent2 = new Intent(getActivity(), KhuHaiReceiver.class);
         final Intent intent3 = new Intent(getActivity(), KhuBaReceiver.class);
         final Intent intent4 = new Intent(getActivity(), KhuBonReceiver.class);
+
+        final Intent intent1t = new Intent(getActivity(), KhuMotTatReceiver.class);
+        final Intent intent2t = new Intent(getActivity(), KhuHaiTatReceiver.class);
+        final Intent intent3t = new Intent(getActivity(), KhuBaTatReceiver.class);
+        final Intent intent4t = new Intent(getActivity(), KhuBonTatReceiver.class);
+
         final TextView tvtimekhu1 = (TextView) view.findViewById(R.id.tvtimekhu1);
         final TextView tvtimekhu2 = (TextView) view.findViewById(R.id.tvtimekhu2);
         final TextView tvtimekhu3 = (TextView) view.findViewById(R.id.tvtimekhu3);
         final TextView tvtimekhu4 = (TextView) view.findViewById(R.id.tvtimekhu4);
+
+        final TextView tvtimekhu1t = (TextView) view.findViewById(R.id.tvtimekhu1t);
+        final TextView tvtimekhu2t = (TextView) view.findViewById(R.id.tvtimekhu2t);
+        final TextView tvtimekhu3t = (TextView) view.findViewById(R.id.tvtimekhu3t);
+        final TextView tvtimekhu4t = (TextView) view.findViewById(R.id.tvtimekhu4t);
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         editor = sharedPreferences.edit();
         calendar = Calendar.getInstance();
@@ -194,6 +221,27 @@ public class DieuKhienFragment extends Fragment {
                         TGkhu1.setValue(thoigian1);
                         pendingIntent = PendingIntent.getBroadcast(
                                 getActivity(), 0, intent1, PendingIntent.FLAG_CANCEL_CURRENT
+                        );
+                        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + (5 * 1000), pendingIntent);
+                    }
+                }, currentHour, currentMinute, true);
+                timePickerDialog.show();
+            }
+        });
+
+        hengiotat1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDaykhu1t, int minuteskhu1t) {
+                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDaykhu1t);
+                        calendar.set(Calendar.MINUTE, minuteskhu1t);
+                        String thoigian1t = (hourOfDaykhu1t + ":" + minuteskhu1t);
+                        TGTkhu1.setValue(thoigian1t);
+                        pendingIntent = PendingIntent.getBroadcast(
+                                getActivity(), 0, intent1t, PendingIntent.FLAG_CANCEL_CURRENT
                         );
                         AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);
                         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + (5 * 1000), pendingIntent);
@@ -224,6 +272,27 @@ public class DieuKhienFragment extends Fragment {
                 timePickerDialog.show();
             }
         });
+
+        hengiotat2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDaykhu2t, int minuteskhu2t) {
+                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDaykhu2t);
+                        calendar.set(Calendar.MINUTE, minuteskhu2t);
+                        String thoigian2t = (hourOfDaykhu2t + ":" + minuteskhu2t);
+                        TGTkhu2.setValue(thoigian2t);
+                        pendingIntent = PendingIntent.getBroadcast(
+                                getActivity(), 0, intent2t, PendingIntent.FLAG_CANCEL_CURRENT
+                        );
+                        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + (5 * 1000), pendingIntent);
+                    }
+                }, currentHour, currentMinute, true);
+                timePickerDialog.show();
+            }
+        });
 //=================================3===================================================
         hengiokhu3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -241,6 +310,27 @@ public class DieuKhienFragment extends Fragment {
                         AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);
                         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + (5 * 1000), pendingIntent);
 
+                    }
+                }, currentHour, currentMinute, true);
+                timePickerDialog.show();
+            }
+        });
+
+        hengiotat3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDaykhu3t, int minuteskhu3t) {
+                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDaykhu3t);
+                        calendar.set(Calendar.MINUTE, minuteskhu3t);
+                        String thoigian3t = (hourOfDaykhu3t + ":" + minuteskhu3t);
+                        TGTkhu3.setValue(thoigian3t);
+                        pendingIntent = PendingIntent.getBroadcast(
+                                getActivity(), 0, intent3t, PendingIntent.FLAG_CANCEL_CURRENT
+                        );
+                        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + (5 * 1000), pendingIntent);
                     }
                 }, currentHour, currentMinute, true);
                 timePickerDialog.show();
@@ -268,8 +358,82 @@ public class DieuKhienFragment extends Fragment {
                 timePickerDialog.show();
             }
         });
+
+        hengiotat4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDaykhu4t, int minuteskhu4t) {
+                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDaykhu4t);
+                        calendar.set(Calendar.MINUTE, minuteskhu4t);
+                        String thoigian4t = (hourOfDaykhu4t + ":" + minuteskhu4t);
+                        TGTkhu4.setValue(thoigian4t);
+                        pendingIntent = PendingIntent.getBroadcast(
+                                getActivity(), 0, intent4t, PendingIntent.FLAG_CANCEL_CURRENT
+                        );
+                        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + (5 * 1000), pendingIntent);
+                    }
+                }, currentHour, currentMinute, true);
+                timePickerDialog.show();
+            }
+        });
 //====================================================================================
 
+
+        // Read time1t
+        TGTkhu1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String timekhu1 = dataSnapshot.getValue(String.class);
+                tvtimekhu1t.setText(timekhu1);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+        // Read time2t
+        TGTkhu2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String timekhu2 = dataSnapshot.getValue(String.class);
+                tvtimekhu2t.setText(timekhu2);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+        // Read time3t
+        TGTkhu3.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String timekhu3 = dataSnapshot.getValue(String.class);
+                tvtimekhu3t.setText(timekhu3);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+        // Read time4t
+        TGTkhu4.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String timekhu4 = dataSnapshot.getValue(String.class);
+                tvtimekhu4t.setText(timekhu4);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
         // Read time1
         TGkhu1.addValueEventListener(new ValueEventListener() {
             @Override
