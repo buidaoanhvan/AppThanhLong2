@@ -140,6 +140,76 @@ public class ThongSoFragment extends Fragment {
             }
         });
 
+
+
+        //khu11
+        khu11.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int khu11 = dataSnapshot.getValue(Integer.class);
+                if(khu11==1){
+                    tvttkhu1.setText("Đang Tưới");
+                }else {
+                    tvttkhu1.setText("Không");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+        //khu4
+        khu44.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int khu44 = dataSnapshot.getValue(Integer.class);
+                if(khu44==1){
+                    tvttkhu4.setText("Đang Tưới");
+                }else {
+                    tvttkhu4.setText("Không");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
+        //khu2
+        khu22.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int khu22 = dataSnapshot.getValue(Integer.class);
+                if(khu22==1){
+                    tvttkhu2.setText("Đang Tưới");
+                }else {
+                    tvttkhu2.setText("Không");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
+        //khu3
+        khu33.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int khu33 = dataSnapshot.getValue(Integer.class);
+                if(khu33==1){
+                    tvttkhu3.setText("Đang Tưới");
+                }else {
+                    tvttkhu3.setText("Không");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
+
         // Read Nhiet Do
         nhietdodb.addValueEventListener(new ValueEventListener() {
             @Override
