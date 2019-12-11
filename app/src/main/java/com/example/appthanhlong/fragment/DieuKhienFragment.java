@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -67,6 +70,9 @@ public class DieuKhienFragment extends Fragment {
     DatabaseReference doamdb = database.getReference("ThongSo/DoAm");
     DatabaseReference doamdatdb = database.getReference("ThongSo/DoAmDat");
     DatabaseReference mucnuocdb = database.getReference("ThongSo/MucNuoc");
+
+    DatabaseReference doamdatbat= database.getReference("DieuKien/DoAmDatBat");
+    DatabaseReference doamdattat= database.getReference("DieuKien/DoAmDatTat");
 
     int nhietdo;
     int doamkh;
@@ -204,9 +210,24 @@ public class DieuKhienFragment extends Fragment {
         final TextView tvtimekhu3t = (TextView) view.findViewById(R.id.tvtimekhu3t);
         final TextView tvtimekhu4t = (TextView) view.findViewById(R.id.tvtimekhu4t);
 
+        final EditText etdoambat = (EditText) view.findViewById(R.id.etdoambat);
+        final EditText etdoamtat = (EditText) view.findViewById(R.id.etdoamtat);
+        final Button btnthietlapdoam = (Button) view.findViewById(R.id.btnthietlapdoam);
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         editor = sharedPreferences.edit();
         calendar = Calendar.getInstance();
+
+        btnthietlapdoam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String bat = etdoambat.getText().toString();
+                String tat = etdoamtat.getText().toString();
+                doamdatbat.setValue(Integer.parseInt(bat));
+                doamdattat.setValue(Integer.parseInt(tat));
+                Toast.makeText(getContext(), "Đã Thiết Lập", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 //==================================1==================================================
         hengiokhu1.setOnClickListener(new View.OnClickListener() {

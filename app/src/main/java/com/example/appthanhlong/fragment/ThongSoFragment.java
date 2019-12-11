@@ -38,17 +38,22 @@ public class ThongSoFragment extends Fragment {
 
     ArcProgress nhietdo, doam, doamdat;
     CircleProgress mucnuoc;
-    TextView tvnhietdo, tvgio, tvvitri,tvtrangthaivuon,tvttkhu1,tvttkhu2,tvttkhu3,tvttkhu4;
+    TextView tvnhietdo, tvgio, tvvitri,tvtrangthaivuon,tvttkhu1,tvttkhu2,tvttkhu3,tvttkhu4,tvcbmua;
     ImageView imgthoitiet;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference nhietdodb = database.getReference("ThongSo/NhietDo");
     DatabaseReference doamdb = database.getReference("ThongSo/DoAm");
+    DatabaseReference muadb = database.getReference("ThongSo/Mua");
     DatabaseReference doamdatdb = database.getReference("ThongSo/DoAmDat");
     DatabaseReference mucnuocdb = database.getReference("ThongSo/MucNuoc");
     DatabaseReference khu1 = database.getReference("DieuKien/Khu1");
     DatabaseReference khu2 = database.getReference("DieuKien/Khu2");
     DatabaseReference khu3 = database.getReference("DieuKien/Khu3");
     DatabaseReference khu4 = database.getReference("DieuKien/Khu4");
+    DatabaseReference khu11 = database.getReference("DieuKien/Khu11");
+    DatabaseReference khu22 = database.getReference("DieuKien/Khu22");
+    DatabaseReference khu33 = database.getReference("DieuKien/Khu33");
+    DatabaseReference khu44 = database.getReference("DieuKien/Khu44");
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,6 +63,7 @@ public class ThongSoFragment extends Fragment {
         tvttkhu2 = (TextView) view.findViewById(R.id.tvttkhu2);
         tvttkhu3 = (TextView) view.findViewById(R.id.tvttkhu3);
         tvttkhu4 = (TextView) view.findViewById(R.id.tvttkhu4);
+        tvcbmua  = (TextView) view.findViewById(R.id.tvcbmua);
         nhietdo = (ArcProgress) view.findViewById(R.id.nhietdo_progress);
         doam = (ArcProgress) view.findViewById(R.id.doam_progress);
         doamdat = (ArcProgress) view.findViewById(R.id.doamdat_progress);
@@ -202,6 +208,26 @@ public class ThongSoFragment extends Fragment {
             }
         });
 
+        // Read Mua
+        muadb.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int tsmua = dataSnapshot.getValue(Integer.class);
+                if(tsmua == 0){
+                    imgthoitiet.setImageResource(R.drawable.muoiba);
+                    tvcbmua.setText("Không Mưa");
+                }else {
+                    imgthoitiet.setImageResource(R.drawable.muoichin);
+                    tvcbmua.setText("Đang Mưa");
+                }
+
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
 
 
 
@@ -230,11 +256,11 @@ public class ThongSoFragment extends Fragment {
                 tvnhietdo.setText(nhietdo1+" °C");
                 tvgio.setText(gio1+" m/s");
                 tvvitri.setText(thoitiet);
-                if(s1.equals("m%C6%B0a+v%E1%BB%ABa")){
-                    imgthoitiet.setImageResource(R.drawable.bay);
-                }else if (s1.equals("m%C6%B0a+nh%E1%BA%B9")){
-                    imgthoitiet.setImageResource(R.drawable.muoibon);
-                }
+//                if(s1.equals("m%C6%B0a+v%E1%BB%ABa")){
+//                    imgthoitiet.setImageResource(R.drawable.bay);
+//                }else if (s1.equals("m%C6%B0a+nh%E1%BA%B9")){
+//                    imgthoitiet.setImageResource(R.drawable.muoibon);
+//                }
 
             }
 
