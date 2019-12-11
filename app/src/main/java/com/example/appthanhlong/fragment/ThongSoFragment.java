@@ -1,8 +1,15 @@
 package com.example.appthanhlong.fragment;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -31,7 +38,7 @@ import com.kwabenaberko.openweathermaplib.models.threehourforecast.ThreeHourFore
 import java.net.URLEncoder;
 
 import static android.content.ContentValues.TAG;
-
+import static androidx.core.content.ContextCompat.getSystemService;
 
 
 public class ThongSoFragment extends Fragment {
@@ -54,6 +61,7 @@ public class ThongSoFragment extends Fragment {
     DatabaseReference khu22 = database.getReference("DieuKien/Khu22");
     DatabaseReference khu33 = database.getReference("DieuKien/Khu33");
     DatabaseReference khu44 = database.getReference("DieuKien/Khu44");
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -77,6 +85,7 @@ public class ThongSoFragment extends Fragment {
         tvtrangthaivuon = (TextView) view.findViewById(R.id.tvtrangthaivuon);
         tvvitri = (TextView) view.findViewById(R.id.tvvitri);
         imgthoitiet =(ImageView) view.findViewById(R.id.imgthoitiet);
+        final NotificationManager notificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
         //khu1
         khu1.addValueEventListener(new ValueEventListener() {
             @Override
@@ -253,6 +262,17 @@ public class ThongSoFragment extends Fragment {
                 doamdat.setProgress(tsdoamdat);
                 if(tsdoamdat < 10){
                     tvtrangthaivuon.setText("Độ Ẩm Đất Thấp");
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext())
+                            .setContentTitle("Vườn Của Bạn")
+                            .setContentText("Độ ẩm đất thấp các khu đang tưới")
+                            .setSmallIcon(R.drawable.logo)
+                            .setPriority(Notification.PRIORITY_DEFAULT)
+                            .setAutoCancel(true)
+                            .setDefaults(Notification.DEFAULT_ALL)
+                            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+                    notificationManager.notify(0, builder.build());
+                    Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                    builder.setSound(alarmSound);
                 }else {
                     tvtrangthaivuon.setText("Ổn Định");
                 }
@@ -271,6 +291,18 @@ public class ThongSoFragment extends Fragment {
                 mucnuoc.setProgress(tsmucnuoc);
                 if(tsmucnuoc < 20){
                     tvtrangthaivuon.setText("Mực Nước Dưới 20%");
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext())
+                            .setContentTitle("Vườn Của Bạn")
+                            .setContentText("Mực nước Trong Bể Còn Dưới 20%")
+                            .setSmallIcon(R.drawable.logo)
+                            .setPriority(Notification.PRIORITY_DEFAULT)
+                            .setAutoCancel(true)
+                            .setDefaults(Notification.DEFAULT_ALL)
+                            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+                    notificationManager.notify(0, builder.build());
+                    Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                    builder.setSound(alarmSound);
+
                 }else {
                     tvtrangthaivuon.setText("Ổn Định");
                 }
@@ -293,6 +325,17 @@ public class ThongSoFragment extends Fragment {
                 }else {
                     imgthoitiet.setImageResource(R.drawable.muoichin);
                     tvcbmua.setText("Đang Mưa");
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext())
+                            .setContentTitle("Vườn Của Bạn")
+                            .setContentText("Đang Mưa")
+                            .setSmallIcon(R.drawable.logo)
+                            .setPriority(Notification.PRIORITY_DEFAULT)
+                            .setAutoCancel(true)
+                            .setDefaults(Notification.DEFAULT_ALL)
+                            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+                    notificationManager.notify(1, builder.build());
+                    Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                    builder.setSound(alarmSound);
                 }
 
             }
@@ -301,8 +344,6 @@ public class ThongSoFragment extends Fragment {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
-
-
 
 
         OpenWeatherMapHelper helper = new OpenWeatherMapHelper(getString(R.string.OPEN_WEATHER_MAP_API_KEY));
