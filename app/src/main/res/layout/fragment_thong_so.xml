@@ -34,7 +34,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardView4"
                         android:layout_width="0dp"
-                        android:layout_height="400dp"
+                        android:layout_height="405dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
@@ -184,7 +184,7 @@
                                 android:src="@drawable/ssdsdsd"
                                 app:layout_constraintBottom_toTopOf="@+id/imageView19"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="0.004"
+                                app:layout_constraintHorizontal_bias="0.0"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/textView18"
                                 app:layout_constraintVertical_bias="0.0" />
@@ -235,63 +235,59 @@
                                 android:id="@+id/textView24"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="32dp"
+                                android:layout_marginTop="8dp"
                                 android:text="KHU 2"
                                 android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="@+id/imageView20"
                                 app:layout_constraintEnd_toEndOf="@+id/imageView20"
-                                app:layout_constraintHorizontal_bias="0.867"
                                 app:layout_constraintStart_toStartOf="@+id/imageView20"
-                                app:layout_constraintTop_toTopOf="@+id/imageView20"
-                                app:layout_constraintVertical_bias="0.229" />
+                                app:layout_constraintTop_toTopOf="@+id/imageView20" />
 
                             <TextView
                                 android:id="@+id/textView26"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="32dp"
+                                android:layout_marginTop="8dp"
                                 android:text="KHU 4"
                                 android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="@+id/imageView21"
                                 app:layout_constraintEnd_toEndOf="@+id/imageView21"
-                                app:layout_constraintHorizontal_bias="0.867"
                                 app:layout_constraintStart_toStartOf="@+id/imageView21"
-                                app:layout_constraintTop_toTopOf="@+id/imageView21"
-                                app:layout_constraintVertical_bias="0.262" />
+                                app:layout_constraintTop_toTopOf="@+id/imageView21" />
 
                             <TextView
                                 android:id="@+id/textView25"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="32dp"
+                                android:layout_marginTop="8dp"
                                 android:text="KHU 3"
                                 android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="@+id/imageView19"
                                 app:layout_constraintEnd_toEndOf="@+id/imageView19"
-                                app:layout_constraintHorizontal_bias="0.851"
                                 app:layout_constraintStart_toStartOf="@+id/imageView19"
-                                app:layout_constraintTop_toTopOf="@+id/imageView19"
-                                app:layout_constraintVertical_bias="0.262" />
+                                app:layout_constraintTop_toTopOf="@+id/imageView19" />
 
                             <TextView
                                 android:id="@+id/textView27"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="32dp"
+                                android:layout_marginTop="8dp"
                                 android:text="KHU 1"
                                 android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="@+id/imageView17"
                                 app:layout_constraintEnd_toEndOf="@+id/imageView17"
-                                app:layout_constraintHorizontal_bias="0.851"
                                 app:layout_constraintStart_toStartOf="@+id/imageView17"
-                                app:layout_constraintTop_toTopOf="@+id/imageView17"
-                                app:layout_constraintVertical_bias="0.229" />
+                                app:layout_constraintTop_toTopOf="@+id/imageView17" />
 
                             <TextView
                                 android:id="@+id/tvttkhu1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
-                                android:text="Không"
+                                android:text="Cập Nhật"
                                 app:layout_constraintBottom_toBottomOf="@+id/imageView17"
                                 app:layout_constraintEnd_toEndOf="@+id/imageView17"
-                                app:layout_constraintHorizontal_bias="0.841"
+                                app:layout_constraintHorizontal_bias="0.758"
                                 app:layout_constraintStart_toStartOf="@+id/imageView17"
                                 app:layout_constraintTop_toTopOf="@+id/imageView17"
                                 app:layout_constraintVertical_bias="0.773" />
@@ -300,10 +296,10 @@
                                 android:id="@+id/tvttkhu2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Không"
+                                android:text="Cập Nhật"
                                 app:layout_constraintBottom_toBottomOf="@+id/imageView20"
                                 app:layout_constraintEnd_toEndOf="@+id/imageView20"
-                                app:layout_constraintHorizontal_bias="0.866"
+                                app:layout_constraintHorizontal_bias="0.766"
                                 app:layout_constraintStart_toStartOf="@+id/imageView20"
                                 app:layout_constraintTop_toTopOf="@+id/imageView20"
                                 app:layout_constraintVertical_bias="0.672" />
@@ -312,10 +308,10 @@
                                 android:id="@+id/tvttkhu3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Không"
+                                android:text="Cập Nhật"
                                 app:layout_constraintBottom_toBottomOf="@+id/imageView19"
                                 app:layout_constraintEnd_toEndOf="@+id/imageView19"
-                                app:layout_constraintHorizontal_bias="0.841"
+                                app:layout_constraintHorizontal_bias="0.75"
                                 app:layout_constraintStart_toStartOf="@+id/imageView19"
                                 app:layout_constraintTop_toTopOf="@+id/imageView19"
                                 app:layout_constraintVertical_bias="0.688" />
@@ -324,10 +320,10 @@
                                 android:id="@+id/tvttkhu4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Không"
+                                android:text="Cập Nhật"
                                 app:layout_constraintBottom_toBottomOf="@+id/imageView21"
                                 app:layout_constraintEnd_toEndOf="@+id/imageView21"
-                                app:layout_constraintHorizontal_bias="0.866"
+                                app:layout_constraintHorizontal_bias="0.766"
                                 app:layout_constraintStart_toStartOf="@+id/imageView21"
                                 app:layout_constraintTop_toTopOf="@+id/imageView21"
                                 app:layout_constraintVertical_bias="0.688" />
@@ -342,6 +338,46 @@
                                 app:layout_constraintEnd_toEndOf="@+id/imgthoitiet"
                                 app:layout_constraintStart_toStartOf="@+id/imgthoitiet"
                                 app:layout_constraintTop_toBottomOf="@+id/imgthoitiet" />
+
+                            <TextView
+                                android:id="@+id/tvkhu11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Cập Nhật"
+                                app:layout_constraintEnd_toEndOf="@+id/tvttkhu1"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="@+id/tvttkhu1"
+                                app:layout_constraintTop_toTopOf="@+id/tvttkhu1" />
+
+                            <TextView
+                                android:id="@+id/tvkhu22"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Cập Nhật"
+                                app:layout_constraintEnd_toEndOf="@+id/tvttkhu2"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="@+id/tvttkhu2"
+                                app:layout_constraintTop_toTopOf="@+id/tvttkhu2" />
+
+                            <TextView
+                                android:id="@+id/tvkhu33"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Cập Nhật"
+                                app:layout_constraintEnd_toEndOf="@+id/tvttkhu3"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="@+id/tvttkhu3"
+                                app:layout_constraintTop_toTopOf="@+id/tvttkhu3" />
+
+                            <TextView
+                                android:id="@+id/tvkhu44"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Cập Nhật"
+                                app:layout_constraintEnd_toEndOf="@+id/tvttkhu4"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="@+id/tvttkhu4"
+                                app:layout_constraintTop_toTopOf="@+id/tvttkhu4" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 

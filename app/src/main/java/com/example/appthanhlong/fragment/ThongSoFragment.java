@@ -38,7 +38,7 @@ public class ThongSoFragment extends Fragment {
 
     ArcProgress nhietdo, doam, doamdat;
     CircleProgress mucnuoc;
-    TextView tvnhietdo, tvgio, tvvitri,tvtrangthaivuon,tvttkhu1,tvttkhu2,tvttkhu3,tvttkhu4,tvcbmua;
+    TextView tvnhietdo, tvgio, tvvitri,tvtrangthaivuon,tvttkhu1,tvttkhu2,tvttkhu3,tvttkhu4,tvcbmua, tvttkhu11,tvttkhu22,tvttkhu33,tvttkhu44;
     ImageView imgthoitiet;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference nhietdodb = database.getReference("ThongSo/NhietDo");
@@ -63,6 +63,10 @@ public class ThongSoFragment extends Fragment {
         tvttkhu2 = (TextView) view.findViewById(R.id.tvttkhu2);
         tvttkhu3 = (TextView) view.findViewById(R.id.tvttkhu3);
         tvttkhu4 = (TextView) view.findViewById(R.id.tvttkhu4);
+        tvttkhu11 = (TextView) view.findViewById(R.id.tvkhu11);
+        tvttkhu22 = (TextView) view.findViewById(R.id.tvkhu22);
+        tvttkhu33 = (TextView) view.findViewById(R.id.tvkhu33);
+        tvttkhu44 = (TextView) view.findViewById(R.id.tvkhu44);
         tvcbmua  = (TextView) view.findViewById(R.id.tvcbmua);
         nhietdo = (ArcProgress) view.findViewById(R.id.nhietdo_progress);
         doam = (ArcProgress) view.findViewById(R.id.doam_progress);
@@ -81,7 +85,7 @@ public class ThongSoFragment extends Fragment {
                 if(khu1==1){
                     tvttkhu1.setText("Đang Tưới");
                 }else {
-                    tvttkhu1.setText("Không");
+                    tvttkhu1.setText("");
                 }
             }
             @Override
@@ -97,7 +101,7 @@ public class ThongSoFragment extends Fragment {
                 if(khu4==1){
                     tvttkhu4.setText("Đang Tưới");
                 }else {
-                    tvttkhu4.setText("Không");
+                    tvttkhu4.setText("");
                 }
             }
             @Override
@@ -114,7 +118,7 @@ public class ThongSoFragment extends Fragment {
                 if(khu2==1){
                     tvttkhu2.setText("Đang Tưới");
                 }else {
-                    tvttkhu2.setText("Không");
+                    tvttkhu2.setText("");
                 }
             }
             @Override
@@ -131,7 +135,7 @@ public class ThongSoFragment extends Fragment {
                 if(khu3==1){
                     tvttkhu3.setText("Đang Tưới");
                 }else {
-                    tvttkhu3.setText("Không");
+                    tvttkhu3.setText("");
                 }
             }
             @Override
@@ -148,9 +152,9 @@ public class ThongSoFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int khu11 = dataSnapshot.getValue(Integer.class);
                 if(khu11==1){
-                    tvttkhu1.setText("Đang Tưới");
+                    tvttkhu11.setText("Đang Tưới");
                 }else {
-                    tvttkhu1.setText("Không");
+                    tvttkhu11.setText("");
                 }
             }
             @Override
@@ -164,9 +168,9 @@ public class ThongSoFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int khu44 = dataSnapshot.getValue(Integer.class);
                 if(khu44==1){
-                    tvttkhu4.setText("Đang Tưới");
+                    tvttkhu44.setText("Đang Tưới");
                 }else {
-                    tvttkhu4.setText("Không");
+                    tvttkhu44.setText("");
                 }
             }
             @Override
@@ -181,9 +185,9 @@ public class ThongSoFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int khu22 = dataSnapshot.getValue(Integer.class);
                 if(khu22==1){
-                    tvttkhu2.setText("Đang Tưới");
+                    tvttkhu22.setText("Đang Tưới");
                 }else {
-                    tvttkhu2.setText("Không");
+                    tvttkhu22.setText("");
                 }
             }
             @Override
@@ -198,9 +202,9 @@ public class ThongSoFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int khu33 = dataSnapshot.getValue(Integer.class);
                 if(khu33==1){
-                    tvttkhu3.setText("Đang Tưới");
+                    tvttkhu33.setText("Đang Tưới");
                 }else {
-                    tvttkhu3.setText("Không");
+                    tvttkhu33.setText("");
                 }
             }
             @Override
