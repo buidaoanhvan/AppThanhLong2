@@ -220,7 +220,7 @@ public class ThongSoFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int tsnhiet = dataSnapshot.getValue(Integer.class);
                 nhietdo.setProgress(tsnhiet);
-                if(tsnhiet > 35){
+                if(tsnhiet > 40){
                     tvtrangthaivuon.setText("Nhiệt Độ Cao");
                 }else {
                     tvtrangthaivuon.setText("Ổn Định");
@@ -251,7 +251,7 @@ public class ThongSoFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int tsdoamdat = dataSnapshot.getValue(Integer.class);
                 doamdat.setProgress(tsdoamdat);
-                if(tsdoamdat < 80){
+                if(tsdoamdat < 10){
                     tvtrangthaivuon.setText("Độ Ẩm Đất Thấp");
                 }else {
                     tvtrangthaivuon.setText("Ổn Định");
